@@ -1,0 +1,12 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: win-64
+
+# Necessary packages
+jupyter=1.0.0
+numpy=1.26.3
+#numpy=1.21.6
+python=3.10.13
+
+# Optional packages
+autopep8=1.6.0
