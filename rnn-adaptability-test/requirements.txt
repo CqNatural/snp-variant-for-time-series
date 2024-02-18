@@ -6,6 +6,7 @@
 jupyter=1.0.0
 numpy=1.26.3
 python=3.10.13
+tensorflow=2.10.0
 
 # Optional packages
 autopep8=1.6.0
