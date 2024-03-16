@@ -78,8 +78,11 @@ for i in range(1200):
     for j in range(len(vec)):
         element = vec[j]
         sum += element
+
+        # 考虑随机噪点
+        sum += (random.random()-0.5)*0.001
         # print(f"{element}.0e-00")
-        print(f"{sum}.0e-00")
+        print(f"{sum}")
 
 print("------------")
 # print(matrix_ext)
@@ -88,5 +91,8 @@ for i in range(4):
     for j in range(len(vec)):
         element = vec[j]
         sum += element
+        
+        # 考虑随机噪点
+        sum += (random.random()-0.5)*0.001
         # print(f"{element}.0e-00")
-        print(f"{sum}.0e-00")
+        print(f"{sum}")

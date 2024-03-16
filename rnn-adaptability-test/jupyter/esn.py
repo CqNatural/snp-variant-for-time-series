@@ -20,6 +20,7 @@ initLen = 100
 # data = np.loadtxt('MackeyGlass_t17.txt')
 # data = np.loadtxt('SpikingNeuralPSystem_c3.txt')
 data = np.loadtxt('SpikingNeuralPSystem_random.txt')
+data = np.loadtxt('test_noise.txt')
 
 # test oil
 # import pandas as pd
@@ -34,10 +35,11 @@ plt.title('A sample of data')
 
 # generate the ESN reservoir
 inSize = outSize = 1
-resSize = 55   # 目前最好记录时775
+resSize = 755   # 目前最好记录时775
 a = 0.3 # leaking rate
-a = 0.9 # full learning
+a = 0.85 # full learning
 seed = int((time.time() * 10 ** 6) % 4294967295)
+print(f"seed: {seed}")
 np.random.seed(seed)
 Win = (np.random.rand(resSize,1+inSize) - 0.5) * 1
 W = np.random.rand(resSize,resSize) - 0.5 
@@ -97,6 +99,8 @@ plt.title('Target and generated signals $y(n)$ starting at $n=0$')
 plt.legend(['Target signal', 'Free-running predicted signal'])
 
 plt.figure(2).clear()
+X[1] = X[1]*0.02
+print(X[1])
 plt.plot( X[0:20,0:200].T )
 plt.title(r'Some reservoir activations $\mathbf{x}(n)$')
 
