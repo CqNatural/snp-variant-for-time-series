@@ -21,6 +21,7 @@ initLen = 100
 # data = np.loadtxt('SpikingNeuralPSystem_c3.txt')
 data = np.loadtxt('SpikingNeuralPSystem_random.txt')
 data = np.loadtxt('test_noise.txt')
+data = np.loadtxt('PSystemV.txt')
 
 # test oil
 # import pandas as pd
@@ -30,8 +31,12 @@ data = np.loadtxt('test_noise.txt')
 
 # plot some of it
 plt.figure(10).clear()
-plt.plot(data[:1000])
-plt.title('A sample of data')
+# plt.plot(data[:1000])
+plt.plot(data[:515*3])
+# plt.title('A sample of data')
+plt.xlabel("Rule Execution Times")  # 横坐标名字
+plt.ylabel("Count Of Object v")  # 纵坐标名字
+plt.title('Concentration changes of Object v (epoch=3)')
 
 # generate the ESN reservoir
 inSize = outSize = 1

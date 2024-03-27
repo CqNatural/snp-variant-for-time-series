@@ -4,16 +4,14 @@ import time
 
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy import linalg
-
+from scipy import linalg    # 也可以用Numpy的
 
 class EchoStateNetwork:
     def __init__(self, input_size,
                  output_size,
-                 reservoir_size,
-                 leaking_rate=0.3,
-                 spectral_radius=0.9,
-                 input_scaling=1):
+                 # reservoir_size,
+                 # input_scaling=1
+                 ):
 
         self.input_size = input_size
         self.output_size = output_size
@@ -39,6 +37,7 @@ class EchoStateNetwork:
         # 输出矩阵留空
         self.W_out = None
 
+    # 考虑给这个函数加点返回值，我觉得current_x很合适
     def train(self, input_data, target_data, init_len):
 
         # 记录表的格式（不包括空转部分），每一列是一个状态样本
@@ -95,6 +94,8 @@ class EchoStateNetwork:
         print(f"b.shape={b.shape}")
         print(np.dot(self.W_out, a) - b)
 
+    # 测试过程结束后，会return一个包好的Y，里面记录了test_data所有对应的预测值
+    # 这样外部可以自己选择如何用损失评估函数
     def test(self, input_data, target_data, init_len):
         pass
 
@@ -132,8 +133,6 @@ init_len = 10  # 空转步长
 dataset_name = "./datasets/Multivariate.txt"  # 多变量数据集，一行5个，90行样本
 # 网络参数
 np_seed = 42  # 用于Numpy的随机种子
-input_size = 5  # 输入向量长度
-output_size = 5  # 输出向量长度
 reservoir_size = 1000  # 储备池神经元数目
 spectral_radius = 0.9  # 谱半径
 input_scaling = 1  # 输入尺度，默认为1，普通不用改
@@ -159,11 +158,12 @@ if __name__ == "__main__":
     # plt.show()
 
     # 加载随机种子
-    # seed = set_seed(np_seed)
-    seed = set_seed(None)
+    seed = set_seed(np_seed)
+    # seed = set_seed(None)
 
     # 初始化网络
-    esn = EchoStateNetwork(in_size, out_size, reservoir_size)
+    # esn = EchoStateNetwork(in_size, out_size, reservoir_size)
+    esn = EchoStateNetwork(in_size, out_size)
     esn.train(train_data, train_target, init_len)
 
     print("End.")
